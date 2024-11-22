@@ -1,0 +1,41 @@
+name: talk_diary
+description: "A new Flutter project with MobX and other common configurations."
+publish_to: "none"
+
+# 앱 버전 및 빌드 번호 설정
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  # Flutter 및 기본 패키지
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # 상태 관리: MobX 및 관련 패키지
+  flutter_mobx: ^2.2.1+1
+  mobx: ^2.1.0
+
+  flutter_dotenv: ^5.0.2
+
+  # Flutter 다국어 지원
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  # Flutter 기본 테스트 패키지
+  flutter_test:
+    sdk: flutter
+
+  # MobX 코드 생성 도구
+  mobx_codegen: ^2.0.5
+  build_runner: ^2.4.0
+
+  # 추천 린트 규칙
+  flutter_lints: ^4.0.0
+
+flutter:
+  # 머터리얼 디자인을 사용하도록 설정
+  uses-material-design: true
