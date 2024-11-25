@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:talk_diary/screens/welcome_screen.dart';
-import 'firebase_options.dart';
+// import 'firebase_options.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
 
-  // 비동기적으로 FirebaseOptions 가져오기
-  final firebaseOptions = await DefaultFirebaseOptions.currentPlatform;
+  // // 비동기적으로 FirebaseOptions 가져오기
+  // final firebaseOptions = await DefaultFirebaseOptions.currentPlatform;
 
-  // Firebase 초기화
-  await Firebase.initializeApp(
-    options: firebaseOptions,
-  );
+  // // Firebase 초기화
+  // await Firebase.initializeApp(
+  //   options: firebaseOptions,
+  // );
 
   runApp(const MyApp());
 }
