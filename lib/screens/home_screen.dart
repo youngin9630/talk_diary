@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            // 문자열 경로를 사용하여 이동
+            // 문자열 경로를 사용하여 이동 이현
             Navigator.pushNamed(context, '/home');
           },
           child: Text('Go to Home Screen'),
