@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk_diary/screens/login_screen.dart';
+import 'package:talk_diary/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: LoginPage());
+    return const MaterialApp(home: WelcomeScreen());
   }
 }
 //본엽

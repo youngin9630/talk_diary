@@ -1,0 +1,10 @@
+platform :ios, '10.0'
+
+# CocoaPods analytics sends network stats synchronously affecting flutter build latency.
+# Disable this in CI environments.
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'
+
+# Add your dependencies here
+target 'Runner' do
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+end

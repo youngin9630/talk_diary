@@ -11,6 +11,7 @@ environment:
 dependencies:
   # Flutter 및 기본 패키지
   flutter:
+    
     sdk: flutter
   cupertino_icons: ^1.0.8
 
@@ -39,3 +40,5 @@ dev_dependencies:
 flutter:
   # 머터리얼 디자인을 사용하도록 설정
   uses-material-design: true
+  assets:
+    - assets/images/

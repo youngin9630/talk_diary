@@ -6,6 +6,8 @@ import 'package:talk_diary/store/auth_store.dart';
 final authStore = AuthStore();
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     void handleOnPressTest() {
@@ -16,7 +18,7 @@ class LoginPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      appBar: AppBar(title: const Text("Login")),
       body: Column(
         children: [
           Observer(
@@ -42,7 +44,11 @@ class LoginPage extends StatelessWidget {
               debugPrint("Username: ${authStore.usernameInput}");
               debugPrint("Password: ${authStore.passwordInput}");
             },
-            child: Text("Submit"),
+            child: const Text("Submit"),
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text("Sign Up"),
           ),
         ],
       ),
