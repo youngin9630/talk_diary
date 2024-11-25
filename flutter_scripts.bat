@@ -1,7 +1,7 @@
 @echo off
 
 :: .env 파일 로드
-for /f "tokens=* delims=" %%A in (.env) do set %%A
+for /f "tokens=* delims=" %%A in (assets/.env) do set %%A
 
 :: Flutter 명령어 실행
 if "%1" == "start" (
