@@ -9,6 +9,8 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
+  firebase_core: ^2.25.4
+  firebase_database: ^10.4.5
   # Flutter 및 기본 패키지
   flutter:
     
@@ -38,7 +40,9 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
-  # 머터리얼 디자인을 사용하도록 설정
-  uses-material-design: true
   assets:
     - assets/images/
+    - assets/.env
+  # 머터리얼 디자인을 사용하도록 설정
+  uses-material-design: true
+    
