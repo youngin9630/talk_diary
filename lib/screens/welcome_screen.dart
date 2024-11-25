@@ -29,7 +29,7 @@ class WelcomeScreen extends StatelessWidget {
               const Spacer(),
               Center(
                 child: Image.asset(
-                  "assets/images/talk_diary_logo_1.png",
+                  "assets/images/talk_diary_image_logo.png",
                   width: 150,
                   height: 150,
                 ),
