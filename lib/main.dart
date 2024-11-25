@@ -5,9 +5,15 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // 비동기적으로 FirebaseOptions 가져오기
+  final firebaseOptions = await DefaultFirebaseOptions.currentPlatform;
+
+  // Firebase 초기화
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: firebaseOptions,
   );
+
   runApp(const MyApp());
 }
 
