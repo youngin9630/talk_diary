@@ -9,6 +9,8 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
+  firebase_core: ^2.25.4
+  firebase_database: ^10.4.5
   # Flutter 및 기본 패키지
   flutter:
     sdk: flutter
