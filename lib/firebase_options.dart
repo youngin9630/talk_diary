@@ -5,8 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DefaultFirebaseOptions {
   static Future<FirebaseOptions> get currentPlatform async {
-    // 비동기적으로 dotenv를 로드
-    await dotenv.load();
+    await dotenv.load(fileName: '.env');
 
     if (kIsWeb) {
       return web;

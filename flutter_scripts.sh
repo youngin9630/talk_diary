@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # .env 파일 로드 (있을 경우만 로드)
-if [ -f assets/.env ]; then
-  export $(grep -v '^#' assets/.env | xargs)
+if [ -f .env ]; then
+  export $(grep -v '^#' .env | xargs)
 fi
 
 # Flutter 명령어 실행

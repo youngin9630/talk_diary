@@ -1,9 +1,7 @@
 @echo off
 
-:: .env 파일 로드
-for /f "tokens=* delims=" %%A in (assets/.env) do set %%A
+for /f "tokens=* delims=" %%A in (.env) do set %%A
 
-:: Flutter 명령어 실행
 if "%1" == "start" (
     flutter run
 ) else if "%1" == "android" (
@@ -17,7 +15,6 @@ if "%1" == "start" (
     timeout /t 5 > nul
     flutter run
 ) else if "%1" == "web" (
-    :: 브라우저에서 실행
     if "%BROWSER_NAME%"=="" (
         echo "BROWSER_NAME is not set. Using default browser."
         flutter run -d chrome
