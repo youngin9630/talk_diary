@@ -12,7 +12,15 @@ if "%1" == "start" (
         echo "Running on Android emulator: %EMULATOR_NAME%"
         flutter emulators --launch %EMULATOR_NAME%
     )
-    timeout /t 5 > nul
+    echo "Waiting for emulator to fully boot..."
+    :wait_for_boot
+    adb shell getprop sys.boot_completed | findstr "1" > nul
+    if not errorlevel 1 (
+        echo "Emulator boot completed!"
+    ) else (
+        timeout /t 3 > nul
+        goto wait_for_boot
+    )
     flutter run
 ) else if "%1" == "web" (
     if "%BROWSER_NAME%"=="" (

@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:talk_diary/components/buttons/gradient_button.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
 
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
-      body: Container(
-        decoration: _gradientBackground(),
-        child: SafeArea(
-          top: true,
-          bottom: true,
-          child: Column(
-            children: [
-              const Spacer(),
-              _talkDiaryWritingLogo(),
-              _talkDiaryImageLogo(),
-              const Spacer(),
-              _buttonFeild(),
-              _noticeText(),
-            ],
+      body: Expanded(
+        flex: 1,
+        child: Container(
+          decoration: _gradientBackground(),
+          width: double.infinity,
+          height: double.infinity,
+          child: SafeArea(
+            top: true,
+            bottom: true,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
+              child: Column(
+                children: [
+                  const Spacer(),
+                  _talkDiaryWritingLogo(),
+                  _talkDiaryImageLogo(),
+                  const Spacer(),
+                  _buttonField(),
+                  _noticeText(),
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -31,10 +44,7 @@ class WelcomeScreen extends StatelessWidget {
   _gradientBackground() {
     return BoxDecoration(
       gradient: LinearGradient(
-        colors: [
-          const Color(0xffeeedd5),
-          const Color(0xff6adedb),
-        ],
+        colors: [const Color(0xffeeedd5), const Color(0xff6adedb)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       ),
@@ -42,89 +52,65 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   _talkDiaryWritingLogo() {
-    return Image.asset(
-      "assets/images/talk_diary_writing_logo.png",
-      fit: BoxFit.fitHeight,
-      // width: 300,
-      // height: 300,
+    return Padding(
+      padding: const EdgeInsets.only(top: 129),
+      child: Image.asset(
+        "assets/images/talk_diary_writing_logo@3x.png",
+        fit: BoxFit.fitHeight,
+        width: 300,
+        height: 300,
+      ),
     );
   }
 
   _talkDiaryImageLogo() {
-    return Image.asset(
-      "assets/images/talk_diary_image_logo.png",
-      width: 100,
-      height: 100,
+    return Padding(
+      padding: const EdgeInsets.only(top: 46),
+      child: Image.asset(
+        "assets/images/talk_diary_image_logo@3x.png",
+        width: 100,
+        height: 100,
+      ),
     );
   }
 
-  _buttonFeild() {
+  _buttonField() {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
         padding: const EdgeInsets.only(
-          bottom: 20,
-          left: 16,
-          right: 16,
+          bottom: 16,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 160,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: const Color(0xffF86B61),
-                  width: 3,
-                ),
-                boxShadow: [],
-              ),
+            Expanded(
+              flex: 1,
               child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    side: const BorderSide(color: Color(0xffF86B61), width: 2),
+                  ),
+                ),
                 onPressed: () {},
                 child: Text("로그인",
                     style: TextStyle(
                       color: const Color(0xffF86B61),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.3,
+                      fontSize: 18,
                     )),
               ),
             ),
             const SizedBox(width: 20),
-            Container(
-              width: 160,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color(0xfffd420b),
-                gradient: LinearGradient(
-                  colors: [
-                    const Color(0xffEDE5C8),
-                    const Color(0xffF86B61),
-                  ],
-                  begin: Alignment.topCenter,
-                  stops: [0.0, 0.5],
-                  end: Alignment.bottomCenter,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 5,
-                    offset: Offset(2, 2),
-                  ),
-                ],
-              ),
-              child: TextButton(
-                onPressed: () {},
-                child: const Text("회원가입",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    )),
-              ),
-            ),
+            Expanded(
+                flex: 1,
+                child: GradientButton(
+                    onPressed: () => {},
+                    text: '회원가입',
+                    gradientColors: [Color(0xffEDE5C8), Color(0xffF86B61)])),
           ],
         ),
       ),
@@ -168,7 +154,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          textAlign: TextAlign.center, // 텍스트 가운데 정렬
+          textAlign: TextAlign.center,
         ),
       ),
     );

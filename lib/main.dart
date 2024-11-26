@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:talk_diary/screens/welcome_screen.dart';
 // import 'firebase_options.dart';
 
-void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-
+void main() {
   // // 비동기적으로 FirebaseOptions 가져오기
   // final firebaseOptions = await DefaultFirebaseOptions.currentPlatform;
 
@@ -17,9 +15,14 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(home: WelcomeScreen());
