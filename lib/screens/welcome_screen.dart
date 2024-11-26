@@ -13,27 +13,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
-      body: Expanded(
-        flex: 1,
-        child: Container(
-          decoration: _gradientBackground(),
-          width: double.infinity,
-          height: double.infinity,
-          child: SafeArea(
-            top: true,
-            bottom: true,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
-              child: Column(
-                children: [
-                  const Spacer(),
-                  _talkDiaryWritingLogo(),
-                  _talkDiaryImageLogo(),
-                  const Spacer(),
-                  _buttonField(),
-                  _noticeText(),
-                ],
-              ),
+      body: Container(
+        decoration: _gradientBackground(),
+        width: double.infinity,
+        height: double.infinity,
+        child: SafeArea(
+          top: true,
+          bottom: true,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
+            child: Column(
+              children: [
+                const Spacer(),
+                _talkDiaryWritingLogo(),
+                _talkDiaryImageLogo(),
+                const Spacer(),
+                _buttonField(),
+                _noticeText(),
+              ],
             ),
           ),
         ),
@@ -52,25 +49,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   _talkDiaryWritingLogo() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 129),
-      child: Image.asset(
-        "assets/images/talk_diary_writing_logo@3x.png",
-        fit: BoxFit.fitHeight,
-        width: 300,
-        height: 300,
-      ),
+    return Image.asset(
+      "assets/images/talk_diary_writing_logo@3x.png",
+      fit: BoxFit.fitHeight,
+      width: 300,
+      height: 300,
     );
   }
 
   _talkDiaryImageLogo() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 46),
-      child: Image.asset(
-        "assets/images/talk_diary_image_logo@3x.png",
-        width: 100,
-        height: 100,
-      ),
+    return Image.asset(
+      "assets/images/talk_diary_image_logo@3x.png",
+      width: 100,
+      height: 100,
     );
   }
 
