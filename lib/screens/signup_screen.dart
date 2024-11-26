@@ -1,7 +1,42 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
+
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  String apiResponse = "Loading...";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchApiData();
+  }
+
+  Future<void> fetchApiData() async {
+    try {
+      final response =
+          await http.get(Uri.parse('http://13.125.128.111:8080/api/test'));
+      if (response.statusCode == 200) {
+        setState(() {
+          apiResponse = response.body; // JSON 데이터에서 필요한 부분 추출
+        });
+      } else {
+        setState(() {
+          apiResponse = "Failed to load data";
+        });
+      }
+    } catch (e) {
+      setState(() {
+        apiResponse = "Error: $e";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +95,9 @@ class SignupScreen extends StatelessWidget {
                             child: Text('취소'),
                           ),
                         ],
-                      )
+                      ),
+                      SizedBox(height: 24),
+                      Text(apiResponse),
                     ],
                   ),
                 ),
