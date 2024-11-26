@@ -9,18 +9,7 @@ class WelcomeScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       extendBody: true,
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              const Color(0xffeeedd5),
-              const Color(0xff6adedb),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+        decoration: _gradientBackground(),
         child: SafeArea(
           top: true,
           bottom: true,
@@ -35,6 +24,19 @@ class WelcomeScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  _gradientBackground() {
+    return BoxDecoration(
+      gradient: LinearGradient(
+        colors: [
+          const Color(0xffeeedd5),
+          const Color(0xff6adedb),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
       ),
     );
   }
