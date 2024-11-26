@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk_diary/components/buttons/gradient_button.dart';
+import 'package:talk_diary/screens/signup_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -86,20 +87,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ),
                 onPressed: () {},
-                child: Text("로그인",
-                    style: TextStyle(
-                      color: const Color(0xffF86B61),
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: -0.3,
-                      fontSize: 18,
-                    )),
+                child: Text(
+                  "로그인",
+                  style: TextStyle(
+                    color: const Color(0xffF86B61),
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.3,
+                    fontSize: 18,
+                  ),
+                ),
               ),
             ),
             const SizedBox(width: 20),
             Expanded(
                 flex: 1,
                 child: GradientButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupScreen()),
+                          )
+                        },
                     text: '회원가입',
                     gradientColors: [Color(0xffEDE5C8), Color(0xffF86B61)])),
           ],
