@@ -7,10 +7,16 @@ class AuthStore = _AuthStore with _$AuthStore;
 abstract class _AuthStore with Store {
   // Input 상태
   @observable
+  String emailInput = "";
+
+  @observable
   String usernameInput = "";
 
   @observable
   String passwordInput = "";
+
+  @observable
+  String signUpEmailInput = "";
 
   @observable
   String signUpUsernameInput = "";
@@ -27,6 +33,11 @@ abstract class _AuthStore with Store {
 
   // 액션 메서드
   @action
+  void setEmailInput(String email) {
+    emailInput = email;
+  }
+
+  @action
   void setUsernameInput(String username) {
     usernameInput = username;
   }
@@ -39,6 +50,11 @@ abstract class _AuthStore with Store {
   @action
   void setSignUpUsernameInput(String username) {
     signUpUsernameInput = username;
+  }
+
+  @action
+  void setSignUpEmailInput(String email) {
+    signUpEmailInput = email;
   }
 
   @action

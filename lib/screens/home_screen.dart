@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   AnimatedContainer(
-                    duration: Duration(milliseconds: 500),
+                    duration: Duration(milliseconds: 300),
                     transform: Matrix4.translationValues(0, _offset, 0),
                     child: Container(
                       decoration: BoxDecoration(

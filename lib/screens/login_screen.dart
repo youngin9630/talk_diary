@@ -5,8 +5,8 @@ import 'package:talk_diary/store/auth_store.dart';
 
 final authStore = AuthStore();
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
             builder: (_) => TextField(
               onChanged: (value) => authStore.setUsernameInput(value),
               decoration: InputDecoration(
-                labelText: "Username",
+                labelText: "이메일",
                 hintText: authStore.usernameInput, // 입력한 값 표시
               ),
             ),
@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
             builder: (_) => TextField(
               onChanged: (value) => authStore.setPasswordInput(value),
               decoration: InputDecoration(
-                labelText: "Password",
+                labelText: "비밀번호",
                 hintText: authStore.passwordInput, // 입력한 값 표시
               ),
             ),
@@ -44,11 +44,11 @@ class LoginPage extends StatelessWidget {
               debugPrint("Username: ${authStore.usernameInput}");
               debugPrint("Password: ${authStore.passwordInput}");
             },
-            child: const Text("Submit"),
+            child: const Text("로그인"),
           ),
           ElevatedButton(
             onPressed: () {},
-            child: const Text("Sign Up"),
+            child: const Text("회원가입"),
           ),
         ],
       ),

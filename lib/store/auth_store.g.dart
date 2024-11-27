@@ -9,6 +9,22 @@ part of 'auth_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AuthStore on _AuthStore, Store {
+  late final _$emailInputAtom =
+      Atom(name: '_AuthStore.emailInput', context: context);
+
+  @override
+  String get emailInput {
+    _$emailInputAtom.reportRead();
+    return super.emailInput;
+  }
+
+  @override
+  set emailInput(String value) {
+    _$emailInputAtom.reportWrite(value, super.emailInput, () {
+      super.emailInput = value;
+    });
+  }
+
   late final _$usernameInputAtom =
       Atom(name: '_AuthStore.usernameInput', context: context);
 
@@ -38,6 +54,22 @@ mixin _$AuthStore on _AuthStore, Store {
   set passwordInput(String value) {
     _$passwordInputAtom.reportWrite(value, super.passwordInput, () {
       super.passwordInput = value;
+    });
+  }
+
+  late final _$signUpEmailInputAtom =
+      Atom(name: '_AuthStore.signUpEmailInput', context: context);
+
+  @override
+  String get signUpEmailInput {
+    _$signUpEmailInputAtom.reportRead();
+    return super.signUpEmailInput;
+  }
+
+  @override
+  set signUpEmailInput(String value) {
+    _$signUpEmailInputAtom.reportWrite(value, super.signUpEmailInput, () {
+      super.signUpEmailInput = value;
     });
   }
 
@@ -110,6 +142,17 @@ mixin _$AuthStore on _AuthStore, Store {
       ActionController(name: '_AuthStore', context: context);
 
   @override
+  void setEmailInput(String email) {
+    final _$actionInfo = _$_AuthStoreActionController.startAction(
+        name: '_AuthStore.setEmailInput');
+    try {
+      return super.setEmailInput(email);
+    } finally {
+      _$_AuthStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setUsernameInput(String username) {
     final _$actionInfo = _$_AuthStoreActionController.startAction(
         name: '_AuthStore.setUsernameInput');
@@ -126,6 +169,17 @@ mixin _$AuthStore on _AuthStore, Store {
         name: '_AuthStore.setPasswordInput');
     try {
       return super.setPasswordInput(password);
+    } finally {
+      _$_AuthStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSignUpEmailInput(String email) {
+    final _$actionInfo = _$_AuthStoreActionController.startAction(
+        name: '_AuthStore.setSignUpEmailInput');
+    try {
+      return super.setSignUpEmailInput(email);
     } finally {
       _$_AuthStoreActionController.endAction(_$actionInfo);
     }
@@ -178,8 +232,10 @@ mixin _$AuthStore on _AuthStore, Store {
   @override
   String toString() {
     return '''
+emailInput: ${emailInput},
 usernameInput: ${usernameInput},
 passwordInput: ${passwordInput},
+signUpEmailInput: ${signUpEmailInput},
 signUpUsernameInput: ${signUpUsernameInput},
 signUpPasswordInput: ${signUpPasswordInput},
 signUpConfirmPasswordInput: ${signUpConfirmPasswordInput},

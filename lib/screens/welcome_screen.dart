@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk_diary/components/buttons/gradient_button.dart';
 import 'package:talk_diary/screens/signup_screen.dart';
-import 'package:talk_diary/main_screen.dart';
+import 'package:talk_diary/screens/login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -90,7 +90,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MainScreen()),
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
                   );
                 },
                 child: Text(
