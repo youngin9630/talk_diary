@@ -31,10 +31,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      SizedBox(height: 16),
                       TextFormField(
-                        controller: _nicknameController,
+                        controller: _emailController,
                         decoration: InputDecoration(
-                          hintText: "닉네임",
+                          hintText: "이메일",
                           hintStyle: TextStyle(color: Color(0xff999999)),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -46,11 +47,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 16),
                       TextFormField(
-                        controller: _emailController,
+                        controller: _nicknameController,
                         decoration: InputDecoration(
-                          hintText: "이메일",
+                          hintText: "닉네임",
                           hintStyle: TextStyle(color: Color(0xff999999)),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
