@@ -23,10 +23,10 @@ class LoginScreen extends StatelessWidget {
         children: [
           Observer(
             builder: (_) => TextField(
-              onChanged: (value) => authStore.setUsernameInput(value),
+              onChanged: (value) => authStore.setEmailInput(value),
               decoration: InputDecoration(
                 labelText: "이메일",
-                hintText: authStore.usernameInput, // 입력한 값 표시
+                hintText: authStore.emailInput, // 입력한 값 표시
               ),
             ),
           ),
@@ -41,7 +41,7 @@ class LoginScreen extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              debugPrint("Username: ${authStore.usernameInput}");
+              debugPrint("Email: ${authStore.emailInput}");
               debugPrint("Password: ${authStore.passwordInput}");
             },
             child: const Text("로그인"),
