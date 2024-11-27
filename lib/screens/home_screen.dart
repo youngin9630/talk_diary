@@ -51,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             '안녕하세요, kubony',
                             style: TextStyle(
+                              color: Color(0xff004351),
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
@@ -82,6 +83,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       height: 2000,
                       width: double.infinity,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 4),
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xffc8c8c8),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              width: 80,
+                              height: 4,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: 24),
@@ -95,12 +112,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   bool _isArrowDown = true; // 아이콘 상태를 관리하는 변수
-  double _offset = -325; // 초기 offset 값
+  double _offset = -320; // 초기 offset 값
 
   void _toggleArrow() {
     setState(() {
       _isArrowDown = !_isArrowDown; // 아이콘 상태 변경
-      _offset = _isArrowDown ? -325 : -220; // offset 값 변경
+      _offset = _isArrowDown ? -320 : -220; // offset 값 변경
     });
   }
 }
