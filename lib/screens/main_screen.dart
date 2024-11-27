@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:talk_diary/screens/home_screen.dart';
+import 'package:talk_diary/screens/mydiary_screen.dart';
+import 'package:talk_diary/screens/writing_screen.dart';
+import 'package:talk_diary/screens/exploring_screen.dart';
+import 'package:talk_diary/screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,6 +17,10 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _pages = [
     const HomeScreen(),
+    const MyDiaryScreen(),
+    const WritingScreen(),
+    const ExploringScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -35,31 +43,62 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedFontSize: 12.0,
-          unselectedFontSize: 2.0,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey.shade200,
-          backgroundColor: Colors.grey.shade200,
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
                 color: Colors.black,
+                width: 2.0,
               ),
-              label: '홈',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_outline_sharp,
-                color: Colors.black,
+          ),
+          child: BottomNavigationBar(
+            selectedFontSize: 0.0,
+            unselectedFontSize: 0.0,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            backgroundColor: Colors.black,
+            type: BottomNavigationBarType.fixed,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: Colors.white,
+                ),
+                label: '홈',
               ),
-              label: '프로필',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.my_library_books_outlined,
+                  color: Colors.white,
+                ),
+                label: '내 글',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.add_circle_outline_rounded,
+                  color: Colors.white,
+                ),
+                label: '글쓰기',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.explore_outlined,
+                  color: Colors.white,
+                ),
+                label: '탐색',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person_outline_sharp,
+                  color: Colors.white,
+                ),
+                label: '프로필',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+          ),
         ),
       ),
     );
