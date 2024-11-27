@@ -73,107 +73,106 @@ class _HomeScreenState extends State<HomeScreen> {
                 AnimatedContainer(
                   duration: Duration(milliseconds: 300),
                   transform: Matrix4.translationValues(0, _offset, 0),
-                  child: Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20)),
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 2,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 2,
+                      ),
+                    ),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 8),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xffc8c8c8),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            width: 80,
+                            height: 4,
+                          ),
                         ),
-                      ),
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 8),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xffc8c8c8),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              width: 80,
-                              height: 4,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 78),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      color: Colors.redAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.blueAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.redAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.blueAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.redAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.blueAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.redAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.blueAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.redAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.blueAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.redAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                    Container(
-                                      color: Colors.blueAccent,
-                                      height: 100,
-                                      width: double.infinity,
-                                    ),
-                                  ],
-                                ),
+                        SizedBox(height: 8),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 78),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    color: Colors.redAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.blueAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.redAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.blueAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.redAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.blueAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.redAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.blueAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.redAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.blueAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.redAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                  Container(
+                                    color: Colors.blueAccent,
+                                    height: 100,
+                                    width: double.infinity,
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
