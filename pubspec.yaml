@@ -40,6 +40,6 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
-    - assets/.env
+    - .env
   # 머터리얼 디자인을 사용하도록 설정
   uses-material-design: true
