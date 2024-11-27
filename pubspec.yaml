@@ -13,6 +13,7 @@ dependencies:
   dio: ^5.3.3
   flutter:
     sdk: flutter
+  uuid: ^3.0.4
   cupertino_icons: ^1.0.8
 
   # 상태 관리: MobX 및 관련 패키지
