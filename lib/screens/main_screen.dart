@@ -30,7 +30,9 @@ class _MainScreenState extends State<MainScreen> {
       child: Scaffold(
         body: Column(
           children: [
-            Expanded(child: _pages[_selectedIndex]),
+            Expanded(
+              child: _pages[_selectedIndex],
+            ),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
