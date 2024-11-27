@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart'; // Observer를 사용하기 위해 필요
 import 'package:talk_diary/screens/home_screen.dart';
+import 'package:talk_diary/screens/main_screen.dart';
 import 'package:talk_diary/store/auth_store.dart';
 
 final authStore = AuthStore();
@@ -41,6 +42,10 @@ class LoginScreen extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainScreen()),
+              );
               debugPrint("Email: ${authStore.emailInput}");
               debugPrint("Password: ${authStore.passwordInput}");
             },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk_diary/components/buttons/gradient_button.dart';
-import 'package:talk_diary/screens/signup_screen.dart';
-import 'package:talk_diary/screens/login_screen.dart';
+import 'package:talk_diary/screens/lobby/signup_screen.dart';
+import 'package:talk_diary/screens/lobby/login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
