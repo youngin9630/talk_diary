@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talk_diary/screens/home_screen.dart';
-import 'package:talk_diary/screens/mydiary_screen.dart';
-import 'package:talk_diary/screens/writing_screen.dart';
-import 'package:talk_diary/screens/exploring_screen.dart';
-import 'package:talk_diary/screens/profile_screen.dart';
+import 'package:talk_diary/screens/main/home_screen.dart';
+import 'package:talk_diary/screens/main/mydiary_screen.dart';
+import 'package:talk_diary/screens/main/writing_screen.dart';
+import 'package:talk_diary/screens/main/exploring_screen.dart';
+import 'package:talk_diary/screens/main/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,24 +13,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
-
-  final List<Widget> _pages = [
-    const HomeScreen(),
-    const MyDiaryScreen(),
-    const WritingScreen(),
-    const ExploringScreen(),
-    const ProfileScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(
-      () {
-        _selectedIndex = index;
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -103,6 +85,24 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomeScreen(),
+    const MyDiaryScreen(),
+    const WritingScreen(),
+    const ExploringScreen(),
+    const ProfileScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(
+      () {
+        _selectedIndex = index;
+      },
     );
   }
 }
