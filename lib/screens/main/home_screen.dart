@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talk_diary/components/backgrounds/main_background.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,12 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      body: Container(
-        decoration: BoxDecoration(
-          color: Color(0xff8BE2DA),
-        ),
-        width: double.infinity,
-        height: double.infinity,
+      body: MainBackground(
         child: SafeArea(
           top: true,
           bottom: false,
@@ -72,7 +68,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 AnimatedContainer(
                   duration: Duration(milliseconds: 300),
-                  curve: Curves.easeIn,
                   transform: Matrix4.translationValues(0, _offset, 0),
                   child: Container(
                     decoration: BoxDecoration(
