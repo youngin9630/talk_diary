@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 import 'package:talk_diary/screens/main_screen.dart';
 import 'package:talk_diary/components/backgrounds/gradient_background.dart';
+import 'package:talk_diary/components/buttons/gradient_button.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -57,15 +58,17 @@ class SignupScreenState extends State<SignupScreen> {
     return TextFormField(
       controller: _emailController,
       decoration: InputDecoration(
-        hintText: "이메일",
+        labelText: "이메일",
         hintStyle: TextStyle(color: Color(0xff999999)),
+        labelStyle: TextStyle(color: Color(0xff999999)),
+        floatingLabelStyle: TextStyle(color: Colors.black),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: Color(0xff999999)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: Colors.black),
         ),
       ),
     );
@@ -75,7 +78,9 @@ class SignupScreenState extends State<SignupScreen> {
     return TextFormField(
       controller: _nicknameController,
       decoration: InputDecoration(
-        hintText: "닉네임",
+        labelText: "닉네임",
+        labelStyle: TextStyle(color: Color(0xff999999)),
+        floatingLabelStyle: TextStyle(color: Colors.black),
         hintStyle: TextStyle(color: Color(0xff999999)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -83,7 +88,7 @@ class SignupScreenState extends State<SignupScreen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: Colors.black),
         ),
       ),
     );
@@ -93,7 +98,9 @@ class SignupScreenState extends State<SignupScreen> {
     return TextFormField(
       controller: _passwordController,
       decoration: InputDecoration(
-        hintText: "비밀번호",
+        labelText: "비밀번호",
+        labelStyle: TextStyle(color: Color(0xff999999)),
+        floatingLabelStyle: TextStyle(color: Colors.black),
         hintStyle: TextStyle(color: Color(0xff999999)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -101,7 +108,7 @@ class SignupScreenState extends State<SignupScreen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: Colors.black),
         ),
       ),
       obscureText: true, // 비밀번호 숨기기
@@ -112,7 +119,9 @@ class SignupScreenState extends State<SignupScreen> {
     return TextFormField(
       controller: _confirmPasswordController,
       decoration: InputDecoration(
-        hintText: "비밀번호 확인",
+        labelText: "비밀번호 확인",
+        labelStyle: TextStyle(color: Color(0xff999999)),
+        floatingLabelStyle: TextStyle(color: Colors.black),
         hintStyle: TextStyle(color: Color(0xff999999)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -120,7 +129,7 @@ class SignupScreenState extends State<SignupScreen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: Colors.black),
         ),
       ),
       obscureText: true, // 비밀번호 숨기기
@@ -131,7 +140,9 @@ class SignupScreenState extends State<SignupScreen> {
     return TextFormField(
       controller: _phoneController,
       decoration: InputDecoration(
-        hintText: "전화번호",
+        labelText: "전화번호",
+        labelStyle: TextStyle(color: Color(0xff999999)),
+        floatingLabelStyle: TextStyle(color: Colors.black),
         hintStyle: TextStyle(color: Color(0xff999999)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -139,7 +150,7 @@ class SignupScreenState extends State<SignupScreen> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: Colors.black),
         ),
       ),
       keyboardType: TextInputType.phone,
@@ -150,32 +161,55 @@ class SignupScreenState extends State<SignupScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TextButton(
-          onPressed: () {
-            if (_nicknameController.text.isEmpty ||
-                _emailController.text.isEmpty ||
-                _passwordController.text.isEmpty ||
-                _confirmPasswordController.text.isEmpty ||
-                _phoneController.text.isEmpty) {
-              setState(() {
-                apiResponse = "모든 필드를 입력하세요.";
-              });
-            } else if (_passwordController.text !=
-                _confirmPasswordController.text) {
-              setState(() {
-                apiResponse = "비밀번호가 일치하지 않습니다.";
-              });
-            } else {
-              signupUser(); // 회원가입 메서드 호출
-            }
-          },
-          child: Text('가입완료'),
+        Expanded(
+          flex: 1,
+          child: GradientButton(
+            onPressed: () {
+              if (_nicknameController.text.isEmpty ||
+                  _emailController.text.isEmpty ||
+                  _passwordController.text.isEmpty ||
+                  _confirmPasswordController.text.isEmpty ||
+                  _phoneController.text.isEmpty) {
+                setState(() {
+                  apiResponse = "모든 필드를 입력하세요.";
+                });
+              } else if (_passwordController.text !=
+                  _confirmPasswordController.text) {
+                setState(() {
+                  apiResponse = "비밀번호가 일치하지 않습니다.";
+                });
+              } else {
+                signupUser(); // 회원가입 메서드 호출
+              }
+            },
+            text: '가입완료',
+            gradientColors: [Color(0xffEDE5C8), Color(0xffF86B61)],
+          ),
         ),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('취소'),
+        const SizedBox(width: 20),
+        Expanded(
+          flex: 1,
+          child: TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(color: Color(0xffF86B61), width: 2),
+              ),
+            ),
+            child: Text(
+              '취소',
+              style: TextStyle(
+                color: Color(0xffF86B61),
+                fontWeight: FontWeight.w600,
+                letterSpacing: -0.3,
+                fontSize: 18,
+              ),
+            ),
+          ),
         ),
       ],
     );

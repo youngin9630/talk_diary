@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(height: 120),
+                    const SizedBox(height: 50),
                     _emailFormField(),
                     const SizedBox(height: 16),
                     _passwordFormField(),
@@ -59,7 +59,17 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: _emailController,
       decoration: InputDecoration(
         labelText: "이메일",
-        border: const OutlineInputBorder(),
+        labelStyle: TextStyle(color: Color(0xff999999)),
+        floatingLabelStyle: TextStyle(color: Colors.black),
+        hintStyle: TextStyle(color: Color(0xff999999)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Color(0xff999999)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.black),
+        ),
         errorText: _errorMessage,
       ),
     );
@@ -69,17 +79,56 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextFormField(
       controller: _passwordController,
       obscureText: true,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: "비밀번호",
-        border: OutlineInputBorder(),
+        labelStyle: TextStyle(color: Color(0xff999999)),
+        floatingLabelStyle: TextStyle(color: Colors.black),
+        hintStyle: TextStyle(color: Color(0xff999999)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Color(0xff999999)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.black),
+        ),
       ),
     );
   }
 
   _loginButton() {
-    return ElevatedButton(
-      onPressed: _isLoading ? null : login,
-      child: _isLoading ? const CircularProgressIndicator() : const Text("로그인"),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        gradient: LinearGradient(
+          colors: [Color(0xffEDE5C8), Color(0xffF86B61)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.0, 0.5],
+        ),
+      ),
+      width: MediaQuery.of(context).size.width / 2.5,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        onPressed: _isLoading ? null : login,
+        child: _isLoading
+            ? const CircularProgressIndicator()
+            : Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: const Text(
+                  "로그인",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.3,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+      ),
     );
   }
 
