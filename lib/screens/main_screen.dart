@@ -4,6 +4,7 @@ import 'package:talk_diary/screens/main/mydiary_screen.dart';
 import 'package:talk_diary/screens/main/writing_screen.dart';
 import 'package:talk_diary/screens/main/exploring_screen.dart';
 import 'package:talk_diary/screens/main/profile_screen.dart';
+import 'package:talk_diary/screens/main/home_screen_b.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -31,8 +32,8 @@ class _MainScreenState extends State<MainScreen> {
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: Colors.black,
-                width: 2.0,
+                color: Colors.blue,
+                width: 1.0,
               ),
             ),
           ),
@@ -41,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
             unselectedFontSize: 0.0,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white,
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.blueAccent[100],
             type: BottomNavigationBarType.fixed,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -92,7 +93,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _pages = [
     const HomeScreen(),
-    const MyDiaryScreen(),
+    const HomeScreenB(),
     const WritingScreen(),
     const ExploringScreen(),
     const ProfileScreen(),
