@@ -105,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 78),
                             child: SingleChildScrollView(
+                              // 나중에 futurebuilder 또는 listview.builder로 바꿀 것
                               child: Column(
                                 children: [
                                   Container(

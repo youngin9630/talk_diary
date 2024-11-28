@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk_diary/components/buttons/gradient_button.dart';
+import 'package:talk_diary/components/backgrounds/gradient_background.dart';
 import 'package:talk_diary/screens/lobby/signup_screen.dart';
 import 'package:talk_diary/screens/lobby/login_screen.dart';
 
@@ -15,10 +16,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
-      body: Container(
-        decoration: _gradientBackground(),
-        width: double.infinity,
-        height: double.infinity,
+      body: GradientBackground(
         child: SafeArea(
           top: true,
           bottom: true,
@@ -36,16 +34,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  _gradientBackground() {
-    return BoxDecoration(
-      gradient: LinearGradient(
-        colors: [const Color(0xffeeedd5), const Color(0xff6adedb)],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
       ),
     );
   }

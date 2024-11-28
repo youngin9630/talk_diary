@@ -36,6 +36,8 @@ class _MainScreenState extends State<MainScreen> {
     return PopScope(
       canPop: false,
       child: Scaffold(
+        extendBody: false,
+        extendBodyBehindAppBar: false,
         body: Column(
           children: [
             Expanded(
