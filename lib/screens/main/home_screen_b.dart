@@ -52,7 +52,7 @@ class _HomeScreenBState extends State<HomeScreenB> {
                                     '안녕하세요, kubony',
                                     style: TextStyle(
                                       color: Color(0xff004351),
-                                      fontSize: 24,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

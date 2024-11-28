@@ -25,6 +25,8 @@ dependencies:
   # Flutter 다국어 지원
   flutter_localizations:
     sdk: flutter
+  google_fonts: ^6.2.1
+  path_provider: ^2.1.5
 
 dev_dependencies:
   # Flutter 기본 테스트 패키지

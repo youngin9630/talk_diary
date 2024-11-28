@@ -30,120 +30,17 @@ class SignupScreenState extends State<SignupScreen> {
                 child: Column(
                   children: [
                     SizedBox(height: 16),
-                    TextFormField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        hintText: "이메일",
-                        hintStyle: TextStyle(color: Color(0xff999999)),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Color(0xff999999)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
-                    ),
+                    _emailFormField(),
                     SizedBox(height: 16),
-                    TextFormField(
-                      controller: _nicknameController,
-                      decoration: InputDecoration(
-                        hintText: "닉네임",
-                        hintStyle: TextStyle(color: Color(0xff999999)),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Color(0xff999999)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
-                    ),
+                    _nicknameFormField(),
                     SizedBox(height: 16),
-                    TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        hintText: "비밀번호",
-                        hintStyle: TextStyle(color: Color(0xff999999)),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Color(0xff999999)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
-                      obscureText: true, // 비밀번호 숨기기
-                    ),
+                    _passwordFormField(),
                     SizedBox(height: 16),
-                    TextFormField(
-                      controller: _confirmPasswordController,
-                      decoration: InputDecoration(
-                        hintText: "비밀번호 확인",
-                        hintStyle: TextStyle(color: Color(0xff999999)),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Color(0xff999999)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
-                      obscureText: true, // 비밀번호 숨기기
-                    ),
+                    _confirmPasswordFormField(),
                     SizedBox(height: 16),
-                    TextFormField(
-                      controller: _phoneController,
-                      decoration: InputDecoration(
-                        hintText: "전화번호",
-                        hintStyle: TextStyle(color: Color(0xff999999)),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Color(0xff999999)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
-                      keyboardType: TextInputType.phone,
-                    ),
+                    _phoneFormField(),
                     SizedBox(height: 16),
-                    Row(
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            if (_nicknameController.text.isEmpty ||
-                                _emailController.text.isEmpty ||
-                                _passwordController.text.isEmpty ||
-                                _confirmPasswordController.text.isEmpty ||
-                                _phoneController.text.isEmpty) {
-                              setState(() {
-                                apiResponse = "모든 필드를 입력하세요.";
-                              });
-                            } else if (_passwordController.text !=
-                                _confirmPasswordController.text) {
-                              setState(() {
-                                apiResponse = "비밀번호가 일치하지 않습니다.";
-                              });
-                            } else {
-                              signupUser(); // 회원가입 메서드 호출
-                            }
-                          },
-                          child: Text('가입완료'),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text('취소'),
-                        ),
-                      ],
-                    ),
+                    _buttonField(),
                     SizedBox(height: 24),
                     Text(apiResponse),
                   ],
@@ -156,12 +53,140 @@ class SignupScreenState extends State<SignupScreen> {
     );
   }
 
+  _emailFormField() {
+    return TextFormField(
+      controller: _emailController,
+      decoration: InputDecoration(
+        hintText: "이메일",
+        hintStyle: TextStyle(color: Color(0xff999999)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Color(0xff999999)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.red),
+        ),
+      ),
+    );
+  }
+
+  _nicknameFormField() {
+    return TextFormField(
+      controller: _nicknameController,
+      decoration: InputDecoration(
+        hintText: "닉네임",
+        hintStyle: TextStyle(color: Color(0xff999999)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Color(0xff999999)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.red),
+        ),
+      ),
+    );
+  }
+
+  _passwordFormField() {
+    return TextFormField(
+      controller: _passwordController,
+      decoration: InputDecoration(
+        hintText: "비밀번호",
+        hintStyle: TextStyle(color: Color(0xff999999)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Color(0xff999999)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.red),
+        ),
+      ),
+      obscureText: true, // 비밀번호 숨기기
+    );
+  }
+
+  _confirmPasswordFormField() {
+    return TextFormField(
+      controller: _confirmPasswordController,
+      decoration: InputDecoration(
+        hintText: "비밀번호 확인",
+        hintStyle: TextStyle(color: Color(0xff999999)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Color(0xff999999)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.red),
+        ),
+      ),
+      obscureText: true, // 비밀번호 숨기기
+    );
+  }
+
+  _phoneFormField() {
+    return TextFormField(
+      controller: _phoneController,
+      decoration: InputDecoration(
+        hintText: "전화번호",
+        hintStyle: TextStyle(color: Color(0xff999999)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Color(0xff999999)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.red),
+        ),
+      ),
+      keyboardType: TextInputType.phone,
+    );
+  }
+
+  _buttonField() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+          onPressed: () {
+            if (_nicknameController.text.isEmpty ||
+                _emailController.text.isEmpty ||
+                _passwordController.text.isEmpty ||
+                _confirmPasswordController.text.isEmpty ||
+                _phoneController.text.isEmpty) {
+              setState(() {
+                apiResponse = "모든 필드를 입력하세요.";
+              });
+            } else if (_passwordController.text !=
+                _confirmPasswordController.text) {
+              setState(() {
+                apiResponse = "비밀번호가 일치하지 않습니다.";
+              });
+            } else {
+              signupUser(); // 회원가입 메서드 호출
+            }
+          },
+          child: Text('가입완료'),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('취소'),
+        ),
+      ],
+    );
+  }
+
   final _nicknameController = TextEditingController(); // 닉네임 입력 컨트롤러
   final _emailController = TextEditingController(); // 이메일 입력 컨트롤러
   final _passwordController = TextEditingController(); // 비밀번호 입력 컨트롤러
   final _confirmPasswordController = TextEditingController(); // 비밀번호 확인 입력 컨트롤러
   final _phoneController = TextEditingController(); // 전화번호 입력 컨트롤러
-  String apiResponse = "Loading...";
+  String apiResponse = "";
 
   Future<void> signupUser() async {
     final userUid = const Uuid().v4();

@@ -2,6 +2,7 @@ import 'package:mobx/mobx.dart';
 import 'package:talk_diary/data/user.dart';
 part 'auth_store.g.dart';
 
+// ignore: library_private_types_in_public_api
 class AuthStore = _AuthStore with _$AuthStore;
 
 abstract class _AuthStore with Store {

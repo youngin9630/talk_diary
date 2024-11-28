@@ -37,47 +37,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     const SizedBox(height: 120),
-                    TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        labelText: "이메일",
-                        border: const OutlineInputBorder(),
-                        errorText: _errorMessage,
-                      ),
-                    ),
+                    _emailFormField(),
                     const SizedBox(height: 16),
-                    TextField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: "비밀번호",
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
+                    _passwordFormField(),
                     const SizedBox(height: 24),
-                    ElevatedButton(
-                      onPressed: _isLoading ? null : login,
-                      child: _isLoading
-                          ? const CircularProgressIndicator()
-                          : const Text("로그인"),
-                    ),
+                    _loginButton(),
                     const SizedBox(height: 50),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("계정이 없으신가요?"),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignupScreen()),
-                            );
-                          },
-                          child: const Text("회원가입"),
-                        ),
-                      ],
-                    ),
+                    _signupButton(),
                   ],
                 ),
               ),
@@ -85,6 +51,53 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  _emailFormField() {
+    return TextFormField(
+      controller: _emailController,
+      decoration: InputDecoration(
+        labelText: "이메일",
+        border: const OutlineInputBorder(),
+        errorText: _errorMessage,
+      ),
+    );
+  }
+
+  _passwordFormField() {
+    return TextFormField(
+      controller: _passwordController,
+      obscureText: true,
+      decoration: const InputDecoration(
+        labelText: "비밀번호",
+        border: OutlineInputBorder(),
+      ),
+    );
+  }
+
+  _loginButton() {
+    return ElevatedButton(
+      onPressed: _isLoading ? null : login,
+      child: _isLoading ? const CircularProgressIndicator() : const Text("로그인"),
+    );
+  }
+
+  _signupButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("계정이 없으신가요?"),
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SignupScreen()),
+            );
+          },
+          child: const Text("회원가입"),
+        ),
+      ],
     );
   }
 
