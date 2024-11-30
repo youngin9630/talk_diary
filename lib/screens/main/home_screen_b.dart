@@ -27,7 +27,11 @@ class _HomeScreenBState extends State<HomeScreenB> {
                 expandedHeight: 220,
                 floating: true,
                 pinned: false,
+                stretch: true,
                 flexibleSpace: FlexibleSpaceBar(
+                  stretchModes: [
+                    StretchMode.blurBackground,
+                  ],
                   background: Container(
                     color: Color(0xff8BE2DA),
                     child: Padding(
