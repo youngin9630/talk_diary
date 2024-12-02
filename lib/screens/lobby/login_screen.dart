@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:talk_diary/screens/main_screen.dart';
 import 'package:talk_diary/screens/lobby/signup_screen.dart';
 import 'package:talk_diary/components/backgrounds/gradient_background.dart';
+import 'package:talk_diary/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _authService = AuthService();
+  bool isRememberMe = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     _emailFormField(),
                     const SizedBox(height: 16),
                     _passwordFormField(),
+                    _rememberMeCheckbox(),
                     const SizedBox(height: 24),
                     _loginButton(),
                     const SizedBox(height: 50),
@@ -93,6 +97,18 @@ class _LoginScreenState extends State<LoginScreen> {
           borderSide: BorderSide(color: Colors.black),
         ),
       ),
+    );
+  }
+
+  _rememberMeCheckbox() {
+    return CheckboxListTile(
+      title: const Text('자동 로그인'),
+      value: isRememberMe,
+      onChanged: (bool? value) {
+        setState(() {
+          isRememberMe = value ?? false;
+        });
+      },
     );
   }
 
@@ -169,26 +185,20 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      final response = await http.post(
-        Uri.parse('http://13.125.128.111:8080/api/users/login'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'email': _emailController.text,
-          'password': _passwordController.text,
-        }),
+      final success = await _authService.login(
+        _emailController.text,
+        _passwordController.text,
+        isRememberMe, // 자동 로그인 옵션 전달
       );
 
-      if (response.statusCode == 200) {
-        if (mounted) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const MainScreen()),
-          );
-        }
+      if (success && mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const MainScreen()),
+        );
       } else {
-        final error = jsonDecode(response.body);
         setState(() {
-          _errorMessage = error['message'] ?? '로그인에 실패했습니다.';
+          _errorMessage = '로그인에 실패했습니다.';
         });
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
