@@ -9,6 +9,9 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
+  dio_cookie_manager: ^2.0.0
+  cookie_jar: ^3.0.1
+  flutter_secure_storage: ^9.0.0
   http: ^1.1.0
   dio: ^5.3.3
   flutter:

@@ -5,6 +5,7 @@ import 'package:uuid/uuid.dart';
 import 'package:talk_diary/screens/main_screen.dart';
 import 'package:talk_diary/components/backgrounds/gradient_background.dart';
 import 'package:talk_diary/components/buttons/gradient_button.dart';
+import 'package:talk_diary/screens/lobby/welcome_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -250,7 +251,7 @@ class SignupScreenState extends State<SignupScreen> {
         if (!mounted) return; // mounted 체크 추가
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const MainScreen()),
+          MaterialPageRoute(builder: (context) => const WelcomeScreen()),
         );
 
         // 성공 메시지를 스낵바로 표시 (선택사항)
