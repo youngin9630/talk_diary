@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+
+class WritingAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+  final IconData leadingIcon;
+  final VoidCallback onLeadingPressed;
+  final IconData actionIcon;
+  final VoidCallback onActionPressed;
+
+  const WritingAppBar({
+    Key? key,
+    required this.title,
+    required this.leadingIcon,
+    required this.onLeadingPressed,
+    required this.actionIcon,
+    required this.onActionPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      backgroundColor: const Color(0xff7c7c7c),
+      leading: IconButton(
+        onPressed: onLeadingPressed,
+        icon: Icon(
+          leadingIcon,
+          color: Colors.white,
+          size: 30,
+        ),
+      ),
+      actions: [
+        IconButton(
+          onPressed: onActionPressed,
+          icon: Icon(
+            actionIcon,
+            color: Colors.white,
+            size: 30,
+          ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
