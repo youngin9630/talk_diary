@@ -1,12 +1,12 @@
 // ignore_for_file: avoid_print
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:dio/dio.dart';
 import 'package:talk_diary/interceptors/api_interceptor.dart';
 import 'package:talk_diary/managers/cookie_manager.dart';
+import 'package:talk_diary/managers/storage_manager.dart';
 import 'package:talk_diary/utils/dotenv.dart';
 
 class ApiService {
-  final storage = const FlutterSecureStorage();
+  final storage = StorageManager().storage;
   late final Dio _dio;
 
   // 싱글톤 인스턴스 생성

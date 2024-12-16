@@ -15,13 +15,26 @@ class CookieManager {
   }
 
   Future<void> saveSessionCookie(String cookie) async {
-    final sessionValue = cookie.split(';').firstWhere(
-          (element) => element.startsWith('JSESSIONID='),
-          orElse: () => '',
-        );
-    print("sessionValue: $sessionValue");
-    if (sessionValue.isNotEmpty) {
-      await storage.write(key: 'JSESSIONID', value: sessionValue);
+    // 쿠키 리스트 분리
+    final cookies = cookie.split(';');
+
+    // 쿠키 값 추출
+    final Map<String, String> cookieMap = {
+      'JSESSIONID': cookies.firstWhere(
+        (element) => element.startsWith('JSESSIONID='),
+        orElse: () => '',
+      ),
+      'remember-me': cookies.firstWhere(
+        (element) => element.startsWith('remember-me='),
+        orElse: () => '',
+      ),
+    };
+
+    // 유효한 쿠키만 저장
+    for (final entry in cookieMap.entries) {
+      if (entry.value.isNotEmpty) {
+        await storage.write(key: entry.key, value: entry.value);
+      }
     }
   }
 
