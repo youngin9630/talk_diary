@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:talk_diary/managers/cookie_manager.dart';
+import 'package:talk_diary/store/auth_store.dart';
 
 class ApiInterceptor extends Interceptor {
   final CookieManager cookieManager;
@@ -11,6 +12,11 @@ class ApiInterceptor extends Interceptor {
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
+    // TODO: 로그인 사용자 정보가 없으면 세션쿠키 정보를 보내지 않음.
+    if (authStore.loggedInUser == null) {
+      return;
+    }
+
     if (!kIsWeb) {
       final sessionCookie = await cookieManager.getSessionCookie();
 
@@ -27,6 +33,7 @@ class ApiInterceptor extends Interceptor {
   Future<void> onResponse(
       Response response, ResponseInterceptorHandler handler) async {
     if (!kIsWeb) {
+      debugPrint("response headers: ${response.headers.map}");
       await cookieManager.handleCookies(response.headers.map);
     }
 

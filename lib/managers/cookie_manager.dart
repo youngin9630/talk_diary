@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CookieManager {
@@ -33,6 +34,7 @@ class CookieManager {
     // 유효한 쿠키만 저장
     for (final entry in cookieMap.entries) {
       if (entry.value.isNotEmpty) {
+        debugPrint("save cookie: ${entry.key}=${entry.value}");
         await storage.write(key: entry.key, value: entry.value);
       }
     }
@@ -44,22 +46,21 @@ class CookieManager {
   }
 
   Future<void> handleCookies(Map<String, List<String>> headers) async {
-    // print("headers: $headers");
-    final cookies = headers['Set-Cookie'];
-    print("cookies: $cookies");
-    if (cookies != null && cookies.isNotEmpty) {
-      final sessionCookie = cookies.firstWhere(
-        (cookie) => cookie.startsWith('JSESSIONID='),
-        orElse: () => '',
-      );
+    debugPrint("headers: $headers");
 
-      if (sessionCookie.isNotEmpty) {
-        await saveSessionCookie(sessionCookie);
-      }
+    final cookies = headers['set-cookie'];
+    debugPrint("cookies: $cookies");
+
+    if (cookies != null && cookies.isNotEmpty) {
+      // clearCookies();
+      await saveSessionCookie(cookies.join(';'));
     }
+
+    // 저장된 쿠키 확인 로그
     final jsessionid = await storage.read(key: "JSESSIONID");
-    print("read JSESSIONID: $jsessionid");
+    debugPrint("read JSESSIONID: $jsessionid");
+
     final rememberMe = await storage.read(key: "remember-me");
-    print("read rememberMe: $rememberMe");
+    debugPrint("read rememberMe: $rememberMe");
   }
 }

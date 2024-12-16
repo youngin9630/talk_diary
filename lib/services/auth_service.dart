@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:talk_diary/managers/storage_manager.dart';
 import 'package:talk_diary/services/api_service.dart';
 import 'package:talk_diary/models/login_dto.dart';
+import 'package:talk_diary/store/auth_store.dart';
 
 class AuthService {
   final storage = StorageManager().storage;
@@ -29,7 +30,6 @@ class AuthService {
       );
 
       if (response.statusCode == 200) {
-        // 쿠키는 ApiService에서 자동으로 저장됨
         return true;
       }
       return false;
