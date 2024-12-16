@@ -14,8 +14,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final AuthService _authService = AuthService();
+  late AuthService _authService;
   bool isRememberMe = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeAuthService(); // 비동기 초기화
+  }
+
+  Future<void> _initializeAuthService() async {
+    _authService = await AuthService.create(); // 비동기 생성자
+    setState(() {
+      _isLoading = false; // 초기화 완료
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

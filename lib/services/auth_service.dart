@@ -1,12 +1,19 @@
 import 'dart:convert';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:talk_diary/managers/storage_manager.dart';
 import 'package:talk_diary/services/api_service.dart';
 import 'package:talk_diary/models/login_dto.dart';
-import 'package:dio/dio.dart';
 
 class AuthService {
-  final storage = const FlutterSecureStorage();
-  final ApiService _apiService = ApiService();
+  final storage = StorageManager().storage;
+  late final ApiService _apiService;
+
+  AuthService._();
+
+  static Future<AuthService> create() async {
+    final authService = AuthService._();
+    authService._apiService = await ApiService.create(); // 비동기 초기화
+    return authService;
+  }
 
   Future<bool> login(String email, String password, bool rememberMe) async {
     try {

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk_diary/screens/lobby/welcome_screen.dart';
-import 'package:talk_diary/screens/main_screen.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -18,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: WelcomeScreen(),
     );
   }
 }
